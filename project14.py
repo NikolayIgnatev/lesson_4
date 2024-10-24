@@ -19,7 +19,7 @@ BLUE_cropped = Image.blend(BLUE_middle, BLUE_right, 0.5)
 
 GREEN_cropped = GREEN.crop(coordinates_middle)
 
-image_final = Image.merge('RGB',(RED_cropped, BLUE_cropped, GREEN_cropped))
+image_final = Image.merge('RGB',(RED_cropped, GREEN_cropped, BLUE_cropped))
 
 image_final.thumbnail((80, 80))
 image_final.save('img_small.jpg')
