@@ -2,24 +2,24 @@ from PIL import Image
 
 
 image = Image.open("monro.jpg")
-RGB_image = image.convert('RGB')
-RED, GREEN, BLUE  = image.split()
+rgb_image = image.convert('RGB')
+red, green, blue = image.split()
 
 coordinates_middle  = (50, 0, image.width - 50, image.height)
 coordinates_left  = (100, 0, image.width, image.height)
 coordinates_right  = (0, 0, image.width - 100, image.height)
 
-RED_middle = RED.crop(coordinates_middle)
-RED_left = RED.crop(coordinates_left)
-RED_cropped = Image.blend(RED_middle, RED_left, 0.5)
+red_middle = red.crop(coordinates_middle)
+red_left = red.crop(coordinates_left)
+red_cropped = Image.blend(red_middle, red_left, 0.5)
 
-BLUE_middle = BLUE.crop(coordinates_middle)
-BLUE_right = BLUE.crop(coordinates_right)
-BLUE_cropped = Image.blend(BLUE_middle, BLUE_right, 0.5)
+blue_middle = blue.crop(coordinates_middle)
+blue_right = blue.crop(coordinates_right)
+blue_cropped = Image.blend(blue_middle, blue_right, 0.5)
 
-GREEN_cropped = GREEN.crop(coordinates_middle)
+green_cropped = green.crop(coordinates_middle)
 
-image_final = Image.merge('RGB',(RED_cropped, GREEN_cropped, BLUE_cropped))
+image_final = Image.merge('RGB',(red_cropped, green_cropped, blue_cropped))
 
 image_final.thumbnail((80, 80))
 image_final.save('img_small.jpg')
